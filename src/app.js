@@ -125,15 +125,15 @@ async function userAfk() {
         .find({ lastStatus: { $lte: now - 10000 } })
         .toArray();
 
-    const messagesToInsert = userList.map((u) => ({
-        from: u.name,
+    const messagesToInsert = userList.map((m) => ({
+        from: m.name,
         to: "Todos",
         text: "sai da sala...",
         type: "status",
         time: now,
     }));
 
-    const userNamesToDelete = userList.map((u) => u.name);
+    const userNamesToDelete = userList.map((m) => m.name);
 
     if (messagesToInsert.length > 0) {
         await db.collection("messages").insertMany(messagesToInsert);

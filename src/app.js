@@ -15,9 +15,8 @@ let db;
 
 (async () => {
     try {
-        let test = "  let t     "
         await mongoClient.connect();
-        db = mongoClient.db("batepapo-uol");
+        db = mongoClient.db();
     } catch (err) {
         console.log(err);
     }
